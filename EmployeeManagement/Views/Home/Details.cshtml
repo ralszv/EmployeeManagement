@@ -1,0 +1,32 @@
+﻿@model HomeDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    
+}
+
+<h2>Details</h2>
+
+<div class="card-deck">
+    @foreach (var item in Model.EmployeeList)
+    {
+        <div class="card m-3">
+            <div class="card-header">
+                <h3>@item.Name</h3>
+            </div>
+
+        <img class="card-img-top imageThumbnail" src="~/images/@item.Image" asp-append-version="true" />
+
+            <h4 class="text-center">Employee Id: @item.Id</h4>
+            <h4 class="text-center">Email: @item.Email</h4>
+            <h4 class="text-center">Department: @item.Department</h4>
+            <div class="card-footer text-center">
+                <a asp-controller="Home" asp-action="List"
+                   asp-route-id="@item.Id" class="btn btn-primary">Back</a>
+                <a asp-controller="Home" asp-action="Edit" m-1 
+                   asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    }
+</div>
