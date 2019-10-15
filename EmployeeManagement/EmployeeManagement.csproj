@@ -13,6 +13,12 @@
     <Compile Remove="Migrations\20191011094857_AddPhotoPathMigration1.Designer.cs" />
     <Compile Remove="Migrations\20191011095223_AddPhotoImageMigration.cs" />
     <Compile Remove="Migrations\20191011095223_AddPhotoImageMigration.Designer.cs" />
+    <Compile Remove="Migrations\20191015154602_AddIdentityMigration.cs" />
+    <Compile Remove="Migrations\20191015154602_AddIdentityMigration.Designer.cs" />
+    <Compile Remove="Migrations\20191015154629_AddIdentity.cs" />
+    <Compile Remove="Migrations\20191015154629_AddIdentity.Designer.cs" />
+    <Compile Remove="Migrations\20191015154713_AddIdentity.cs" />
+    <Compile Remove="Migrations\20191015154713_AddIdentity.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
