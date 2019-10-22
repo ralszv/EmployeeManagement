@@ -1,5 +1,5 @@
 ﻿
-@inject SignInManager<IdentityUser> signInManager
+@inject SignInManager<ApplicationUser> signInManager
 
 <!DOCTYPE html>
 <html>
@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/css/site.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <title>@ViewData["Title"] - EmployeeManagement</title>

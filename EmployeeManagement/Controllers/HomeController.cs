@@ -8,12 +8,14 @@ using EmployeeManagement.Interface;
 using Microsoft.AspNetCore.Mvc;
 using EmployeeManagement.Models;
 using EmployeeManagement.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace EmployeeManagement.Controllers
 {
     //[Route("[controller]/[action]")]
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
@@ -35,6 +37,7 @@ namespace EmployeeManagement.Controllers
             //return View();
         }
 
+        [AllowAnonymous]
         public IActionResult List()
         {
              
@@ -48,6 +51,7 @@ namespace EmployeeManagement.Controllers
         }
 
         //[Route("{id?}")]
+        [AllowAnonymous]
         public IActionResult Details(int? id)
         {
             //throw new Exception("Error in details view");

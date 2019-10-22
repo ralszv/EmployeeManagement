@@ -19,6 +19,8 @@
     <Compile Remove="Migrations\20191015154629_AddIdentity.Designer.cs" />
     <Compile Remove="Migrations\20191015154713_AddIdentity.cs" />
     <Compile Remove="Migrations\20191015154713_AddIdentity.Designer.cs" />
+    <Compile Remove="Migrations\20191022151733_ExtendIdentityUser.cs" />
+    <Compile Remove="Migrations\20191022151733_ExtendIdentityUser.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

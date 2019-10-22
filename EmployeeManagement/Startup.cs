@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using EmployeeManagement.Interface;
 using EmployeeManagement.Models;
 using EmployeeManagement.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,9 +38,9 @@ namespace EmployeeManagement
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
-                options.Password.RequiredLength = 10;
+                options.Password.RequiredLength = 8;
             }).AddEntityFrameworkStores<AppDbContext>();
 
             //services.Configure<IdentityOptions>(options =>
@@ -47,8 +49,15 @@ namespace EmployeeManagement
             //    options.Password.RequiredUniqueChars = 3;
             //});
 
-            services.AddMvc();
-            services.AddMvc().AddXmlSerializerFormatters();
+            //services.AddMvc();
+            services.AddMvc(options =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                                .RequireAuthenticatedUser()
+                                .Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+            }).AddXmlSerializerFormatters();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EmployeeDBConnection")));
